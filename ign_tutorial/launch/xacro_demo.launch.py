@@ -9,8 +9,6 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 PACKAGE_NAME = "ign_tutorial"
 
 def generate_launch_description():
-
-    # Package Directories
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
     pkg_demo = get_package_share_directory(PACKAGE_NAME)
 
@@ -21,6 +19,7 @@ def generate_launch_description():
     )
     robot_description = robot_description_config.toxml()
     params = {'use_sim_time': True, 'robot_description': robot_description}
+
     # Robot state publisher
     robot_state_publisher = Node(
         package='robot_state_publisher',
