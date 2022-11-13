@@ -150,6 +150,38 @@
     <xacro:sphere_inertia m="10.05" r="${(wheel_radius+wheel_zoff-(base_height/2))}"/>
   </link>
 
+  <link name="sensor_laser">
+    <inertial>
+      <origin xyz="0.15 0 1.15" rpy="0 0 0"/>
+      <mass value="1" />
+      <!-- RANDOM INERTIA BELOW -->
+      
+      <!--
+        OLD INERTIA VALUE - BEFORE RANDOM VALUE INSERTED USING MACROS
+        <inertia ixx="0.02" ixy="0" ixz="0" iyy="0.02" iyz="0" izz="0.02"/>  
+      -->
+      <xacro:cylinder_inertia m="1" r="0.05" h="0.1" />
+      
+    </inertial>
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+      <material name="white" />
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+    </collision>
+  </link>
+
+  
+
   <gazebo reference="front_caster">
     <mu1>0.01</mu1>
     <mu2>0.01</mu2>
@@ -181,6 +213,12 @@
   </joint>
 
   <link name="gps_link"/>
+
+  <joint name="joint_sensor_laser" type="fixed">
+    <origin xyz="0.15 0 0.05" rpy="0 0 0"/>
+    <parent link="base_link"/>
+    <child link="sensor_laser"/>
+  </joint>
 
   <gazebo>
     <plugin

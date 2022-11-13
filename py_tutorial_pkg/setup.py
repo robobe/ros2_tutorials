@@ -29,7 +29,9 @@ setup(
             'subscriber_qos=py_tutorial_pkg.subscriber_custom_minimal_qos:main',
             "turtle_goto=py_tutorial_pkg.turtle_goto:main",
             "turtle_goto_tf=py_tutorial_pkg.turtle_goto_tf:main",
-            "turtle_goto_rviz=py_tutorial_pkg.turtle_goto_rviz:main"
+            "turtle_goto_rviz=py_tutorial_pkg.turtle_goto_rviz:main",
+            "minimal_pub=py_tutorial_pkg.minimal_pub:main",
+            "minimal_sub=py_tutorial_pkg.minimal_sub:main"
         ],
     },
 )
